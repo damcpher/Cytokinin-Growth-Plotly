@@ -1,0 +1,19 @@
+---
+title: "Plant Growth Plot"
+author: "Duncan McPherson"
+date: "January 20, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+```
+
+## Plant Growth Plot
+
+```{r, warning=FALSE}
+data.frame(RootLength = c(rnorm(20,5,0.3),rnorm(20,4,0.3),rnorm(20,6,0.4)), group = c(rep("Control",20),rep("+Cytokinin",20),rep("+Cytokinin Inhibitor",20))) -> CK.Expt
+plot_ly(CK.Expt, y = ~RootLength, color = ~group, type = "box") %>% layout(title="Root Growth for Two Treatments and Control")
+```
+
